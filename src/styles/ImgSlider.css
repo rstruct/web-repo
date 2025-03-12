@@ -1,0 +1,12 @@
+.swiper-button-next,
+.swiper-button-prev {
+  color: #D78509; /* Use the primary color from the theme */
+}
+
+.swiper-pagination-bullet {
+  background: #D78509; /* Use the primary color from the theme */
+}
+
+.swiper-pagination-bullet-active {
+  background: #b56907; /* Darker shade of the primary color */
+}
