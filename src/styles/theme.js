@@ -3,45 +3,49 @@ import { createTheme } from '@mui/material/styles';
 const theme = createTheme({
   palette: {
     primary: {
-      main: '#D78509', // Construction orange color
+      main: '#03294e',
+      light: '#e3e7ec', // Lighter shade for hover effects
+      dark: '#021936', // Darker shade for active states
     },
     secondary: {
-      main: '#6f4c3e', // Chocolate color
+      main: '#d6a015',
+      light: '#fff5c1', // Lighter shade for hover effects
+      dark: '#b37a09', // Darker shade for active states
     },
     background: {
       default: '#f5f5f5', // Light background
       paper: '#ffffff', // White background for paper components
     },
     text: {
-      primary: '#333', // Darker text for readability
-      secondary: '#6f4c3e', // Chocolate color for secondary text
+      primary: '#03294e', // Darker text for readability
+      secondary: '#021936', // Chocolate color for secondary text
     },
   },
   typography: {
     fontFamily: 'Roboto, sans-serif',
     h1: {
-      color: '#D78509', // Construction orange color for headings
+      color: '#d6a015', // Construction orange color for headings
     },
     h2: {
-      color: '#D78509',
+      color: '#d6a015',
     },
     h3: {
-      color: '#D78509',
+      color: '#d6a015',
     },
     h4: {
-      color: '#D78509',
+      color: '#d6a015',
     },
     h5: {
-      color: '#D78509',
+      color: '#d6a015',
     },
     h6: {
-      color: '#D78509',
+      color: '#d6a015',
     },
     body1: {
-      color: '#333', // Darker text for readability
+      color: '#03294e', // Darker text for readability
     },
     body2: {
-      color: '#333',
+      color: '#d6a015',
     },
   },
   components: {

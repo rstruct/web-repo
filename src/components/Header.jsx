@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from 'react';
-import { AppBar, Toolbar, IconButton, Drawer, List, ListItem, ListItemText, useMediaQuery, useTheme, Button } from '@mui/material';
+import { styled, AppBar, Toolbar, IconButton, Drawer, List, ListItem, ListItemText, useMediaQuery, useTheme, Button } from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
-import slider2 from '../assets/logo3.png';
+import logo from '../assets/updatedLogo.png';
 import homeIcon from '../assets/logo2.png'; // Import the home icon image
+
 
 const Header = () => {
   const [drawerOpen, setDrawerOpen] = useState(false);
@@ -17,6 +18,46 @@ const Header = () => {
     { text: 'Projects', link: '/projects' },
     { text: 'Contact', link: '/contact' },
   ];
+
+  const AnimatedButton = styled(Button)(({ theme }) => ({
+    position: 'relative',
+    padding: '10px 20px',
+    backgroundColor: 'transparent',
+    color: theme.palette.primary.main,
+    border: 'none',
+    cursor: 'pointer',
+    overflow: 'hidden',
+    transition: 'all 0.3s ease',
+    '&:before': {
+      content: '""',
+      position: 'absolute',
+      bottom: 0,
+      left: 0,
+      width: '0%',
+      height: '2px',
+      backgroundColor: theme.palette.primary.main,
+      transition: 'width 0.3s ease',
+    },
+    '&:hover': {
+      color: theme.palette.primary.dark,
+      backgroundColor: 'transparent',
+      '&:before': {
+        width: '100%',
+      },
+    },
+    '&:active': {
+      transform: 'scale(0.98)',
+    },
+  }));
+
+  const HoverBorderButton = ({ children, ...props }) => {
+    return (
+      <AnimatedButton variant="text" {...props}>
+        {children}
+      </AnimatedButton>
+    );
+  };
+
 
   useEffect(() => {
     const handleScroll = () => {
@@ -40,33 +81,28 @@ const Header = () => {
       sx={{
         backgroundColor: isScrolled ? 'rgba(255, 255, 255, 0.6)' : 'rgba(255, 255, 255, 0.3)',
         flexWrap: 'wrap',
-        alignContent: 'center',
         zIndex: 1000,
-        // backdropFilter: 'blur(10px)',
         boxShadow: '0 2px 10px rgba(0, 0, 0, 0.1)',
         transition: 'background-color 0.3s ease-in-out',
       }}
     >
-      <Toolbar label="Header" color="primary">
-        {/* Logo */}
+      <Toolbar label="Header" color="primary" sx={{ justifyContent: 'space-between', width: '100%' }}>
         <img
-          src={slider2}
+          src={logo}
           alt="R-struct"
           style={{
-            height: isMobile ? '50px' : '100px',
-            marginRight: 'auto',
-            paddingRight: isMobile ? '0' : '100px',
+            height: isMobile ? '30px' : '70px',
+            margin: '15px 15px 15px 15px',
+            marginLeft: isMobile ? '10px' : '100px',
           }}
         />
 
-        {/* Mobile Menu Icon (only shown on mobile) */}
         {isMobile && (
           <IconButton edge="end" color="inherit" aria-label="menu" onClick={() => setDrawerOpen(true)}>
             <MenuIcon />
           </IconButton>
         )}
 
-        {/* Mobile Drawer (only shown on mobile) */}
         {isMobile && (
           <Drawer anchor="right" open={drawerOpen} onClose={() => setDrawerOpen(false)} style={{ paddingRight: '50px' }}>
             <List>
@@ -79,7 +115,6 @@ const Header = () => {
           </Drawer>
         )}
 
-        {/* Desktop Menu Items (only shown on non-mobile) */}
         {!isMobile && (
           <div style={{ marginLeft: 'auto', paddingLeft: '100px' }}>
             {menuItems.map((item) => (
@@ -94,7 +129,7 @@ const Header = () => {
                     textDecoration: 'none',
                     background: 'none',
                     '&:hover': {
-                      
+
                       textDecoration: 'none',
                       color: theme.palette.primary.main,
                       background: 'rgba(255, 153, 0, 0.5)',
@@ -104,24 +139,42 @@ const Header = () => {
                   <img src={homeIcon} alt="Home" style={{ height: '30px' }} />
                 </IconButton>
               ) : (
-                <Button
+
+                <HoverBorderButton
                   key={item.text}
                   component="a"
                   href={item.link}
                   sx={{
                     padding: '10px',
-                    color: 'black',
+                    color: theme.palette.primary.main,
                     textDecoration: 'none',
                     background: 'none',
                     '&:hover': {
                       textDecoration: 'none',
-                      color: theme.palette.primary.main,
-                      background: 'rgba(255, 255, 255, 0.5)',
+                     
                     },
                   }}
                 >
                   {item.text}
-                </Button>
+                </HoverBorderButton>
+                // <Button
+                //   key={item.text}
+                //   component="a"
+                //   href={item.link}
+                //   sx={{
+                //     padding: '10px',
+                //     color: 'black',
+                //     textDecoration: 'none',
+                //     background: 'none',
+                //     '&:hover': {
+                //       textDecoration: 'none',
+                //       color: theme.palette.primary.main,
+                //       background: 'rgba(255, 255, 255, 0.5)',
+                //     },
+                //   }}
+                // >
+                //   {item.text}
+                // </Button>
               )
             ))}
           </div>

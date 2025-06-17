@@ -4,7 +4,8 @@ import foundedImg from '../assets/img2.jpg';
 import milestoneImg from '../assets/img3.jpg';
 import expansionImg from '../assets/img4.jpg';
 import acquisitionImg from '../assets/img5.jpg';
-import AboutHeader from '../components/AboutHeader';
+import TitleSection from '../components/TitleSection';
+import AboutSection from '../components/AboutSection';
 
 const steps = [
   { label: 'Founded', description: 'Company was founded in 2000.', image: foundedImg },
@@ -30,9 +31,9 @@ const About = () => {
 
   return (
     <Box sx={{ width: '100%' }}>
-        <AboutHeader/>
-  
-      <Paper elevation={3} sx={{ padding: '20px' }}>
+        <TitleSection title="About Us" />
+        <AboutSection />
+      {/* <Paper elevation={3} sx={{ padding: '20px' }}>
         <Stepper activeStep={activeStep} orientation="vertical">
           {steps.map((step, index) => (
             <Step key={index}>
@@ -83,7 +84,7 @@ const About = () => {
             </Button>
           </Box>
         )}
-      </Paper>
+      </Paper> */}
     </Box>
   );
 };

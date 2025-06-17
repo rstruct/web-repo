@@ -1,28 +1,54 @@
 import React from "react";
-import { Container, Typography, TextField, Button, Box, Grid2, Paper } from "@mui/material";
-import mapImage from "../assets/logo2.png"; // Replace with the path to your map image
-import ContactHeader from "../components/ContactHeader";
+import { Container, Typography, TextField, Button, Box, Paper, Divider } from "@mui/material";
+import mapImage from "../assets/logo2.png";
+import TitleSection from "../components/TitleSection";
+
 const Contact = () => {
   return (
     <>
-      <ContactHeader/>
-    <Container maxWidth="lg" sx={{ mt: 4, mb: 4 }}>
-      <Paper elevation={3} sx={{ p: 4 }}>
-        <Typography variant="h4" component="h1" gutterBottom>
-          Contact Us
-        </Typography>
-        <Typography variant="body1" gutterBottom>
-          We would love to hear from you! Please fill out the form below to get in touch with us.
-        </Typography>
-        <Grid2 container spacing={4}>
-          <Grid2 item xs={12} md={6}>
-            <Box component="form" noValidate autoComplete="off">
+      <TitleSection title="Contact Us" />
+      <Box
+        sx={{
+          minHeight: '100vh',
+          width: '100%',
+          backgroundImage: `url(${mapImage})`,
+          backgroundSize: 'inherit',
+          backgroundPosition: 'center',
+          backgroundRepeat: 'no-repeat',
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          py: 8,
+        }}
+      >
+        <Container maxWidth="sm">
+          <Paper
+            elevation={3}
+            sx={{
+              p: { xs: 2, md: 4 },
+              borderRadius: 3,
+              backgroundColor: 'rgba(255,255,255,0.92)',
+              boxShadow: 6,
+              backdropFilter: 'blur(2px)',
+            }}
+          >
+            <Typography variant="h4" component="h1" gutterBottom align="center">
+              Contact Us
+            </Typography>
+            <Typography variant="body1" gutterBottom align="center">
+              We would love to hear from you! Please fill out the form below to get in touch with us.
+            </Typography>
+            <Box
+              component="form"
+              noValidate
+              autoComplete="off"
+              sx={{ mt: 3, display: 'flex', flexDirection: 'column', gap: 2 }}
+            >
               <TextField
                 required
                 fullWidth
                 id="name"
                 label="Name"
-                margin="normal"
                 variant="outlined"
               />
               <TextField
@@ -30,7 +56,6 @@ const Contact = () => {
                 fullWidth
                 id="email"
                 label="Email"
-                margin="normal"
                 variant="outlined"
                 type="email"
               />
@@ -39,7 +64,6 @@ const Contact = () => {
                 fullWidth
                 id="subject"
                 label="Subject"
-                margin="normal"
                 variant="outlined"
               />
               <TextField
@@ -47,44 +71,19 @@ const Contact = () => {
                 fullWidth
                 id="message"
                 label="Message"
-                margin="normal"
                 variant="outlined"
                 multiline
                 rows={4}
               />
-              <Button variant="contained" color="primary" sx={{ mt: 2 }}>
+              <Button variant="contained" color="primary" sx={{ mt: 1 }}>
                 Send Message
               </Button>
             </Box>
-          </Grid2>
-          <Grid2 item xs={12} md={6}>
-            <Box
-              component="img"
-              src={mapImage}
-              alt="Map"
-              sx={{ width: '100%', height: 'auto', borderRadius: '8px', boxShadow: '0px 4px 8px rgba(0, 0, 0, 0.1)' }}
-            />
-            <Box sx={{ mt: 2 }}>
-              <Typography variant="h6" component="h2">
-                Our Office
-              </Typography>
-              <Typography variant="body1">
-                123 Main Street, Suite 100<br />
-                Anytown, USA 12345
-              </Typography>
-              <Typography variant="body1" sx={{ mt: 1 }}>
-                <strong>Phone:</strong> (123) 456-7890
-              </Typography>
-              <Typography variant="body1">
-                <strong>Email:</strong> info@example.com
-              </Typography>
-            </Box>
-          </Grid2>
-        </Grid2>
-      </Paper>
-    </Container>
- 
-    </>     );
+          </Paper>
+        </Container>
+      </Box>
+    </>
+  );
 };
 
 export default Contact;

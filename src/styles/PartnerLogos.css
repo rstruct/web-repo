@@ -1,0 +1,65 @@
+.partners-container {
+  width: 100%;
+  overflow: hidden;
+  padding: 2rem 0;
+  background: #f8f8f8;
+  text-align: center;
+}
+
+.partners-container h2 {
+  margin-bottom: 1.5rem;
+  color: #333;
+}
+
+.logos-scroll-container {
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+}
+
+.logos-scroll {
+  display: flex;
+  animation: scroll 20s linear infinite;
+  width: calc(250px * 16); /* Adjust based on number of logos and their width */
+}
+
+.logo-item {
+  flex: 0 0 250px;
+  padding: 0 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.logo-item img {
+  max-width: 100%;
+  max-height: 80px;
+  width: auto;
+  height: auto;
+  filter: grayscale(100%);
+  transition: filter 0.3s ease;
+}
+
+.logo-item img:hover {
+  filter: grayscale(0%);
+}
+
+@keyframes scroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%); /* Move by half the width since we duplicated the logos */
+  }
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .logo-item {
+    flex: 0 0 180px;
+  }
+  
+  .logos-scroll {
+    animation-duration: 15s;
+  }
+}
