@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useNavigate } from 'react';
 import { styled, AppBar, Toolbar, IconButton, Drawer, List, ListItem, ListItemText, useMediaQuery, useTheme, Button } from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
 import logo from '../assets/updatedLogo.png';
@@ -18,7 +18,7 @@ const Header = () => {
     { text: 'Projects', link: '/projects' },
     { text: 'Contact', link: '/contact' },
   ];
-
+  const navigate = useNavigate();
   const AnimatedButton = styled(Button)(({ theme }) => ({
     position: 'relative',
     padding: '10px 20px',
@@ -122,7 +122,7 @@ const Header = () => {
                 <IconButton
                   key={item.text}
                   component="a"
-                  href={item.link}
+                  onClick={() => navigate(item.link)}
                   sx={{
                     padding: '10px',
                     color: theme.palette.primary.main,
@@ -143,7 +143,7 @@ const Header = () => {
                 <HoverBorderButton
                   key={item.text}
                   component="a"
-                  href={item.link}
+                  onClick={() => navigate(item.link)}
                   sx={{
                     padding: '10px',
                     color: theme.palette.primary.main,
