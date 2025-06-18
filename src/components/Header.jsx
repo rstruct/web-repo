@@ -108,7 +108,7 @@ const Header = () => {
           <Drawer anchor="right" open={drawerOpen} onClose={() => setDrawerOpen(false)} style={{ paddingRight: '50px' }}>
             <List>
               {menuItems.map((item) => (
-                <ListItem button key={item.text} component="a" href={item.link}>
+                <ListItem button key={item.text} component="a" onClick={() => navigate(item.link)}>
                   <ListItemText primary={item.text} />
                 </ListItem>
               ))}
