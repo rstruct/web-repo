@@ -92,14 +92,14 @@ const Header = () => {
           src={logo}
           alt="R-struct"
           style={{
-            height: isMobile ? '30px' : '70px',
-            margin: '15px 15px 15px 15px',
+            height: isMobile ? '50px' : '70px',
+            margin: isMobile ? '5px 5px 5px 5px' : '15px 15px 15px 15px',
             marginLeft: isMobile ? '10px' : '100px',
           }}
         />
 
         {isMobile && (
-          <IconButton edge="end" color="inherit" aria-label="menu" onClick={() => setDrawerOpen(true)}>
+          <IconButton color="primary.main" edge="end" aria-label="menu" onClick={() => setDrawerOpen(true)}>
             <MenuIcon />
           </IconButton>
         )}
@@ -108,7 +108,7 @@ const Header = () => {
           <Drawer anchor="right" open={drawerOpen} onClose={() => setDrawerOpen(false)} style={{ paddingRight: '50px' }}>
             <List>
               {menuItems.map((item) => (
-                <ListItem button key={item.text} component="a" onClick={() => navigate(item.link)}>
+                <ListItem button key={item.text} component="a" onClick={() => {navigate(item.link); setDrawerOpen(false);}}>
                   <ListItemText primary={item.text} />
                 </ListItem>
               ))}
